@@ -1,8 +1,16 @@
 {
-    "name": "Kantum_Leap-a",
-    "version": "1.0.0",
-    "keywords": ["util", "functional", "server", "client", "browser"],
-    "author": "jeast",
-    "contributors": [],
-    "dependencies": {}
+  "name": "Kantum_Leap-a",
+  "version": "1.0.0",
+  "keywords": [
+    "util",
+    "functional",
+    "server",
+    "client",
+    "browser"
+  ],
+  "author": "jeast",
+  "contributors": [],
+  "dependencies": {
+    "phaser": "^2.6.2"
+  }
 }
