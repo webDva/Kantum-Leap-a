@@ -9,8 +9,9 @@ var Game = function (game) {};
 
 Game.prototype = {
     preload: function () {
-        // Load placeholder sprite
+        // Load placeholder sprites
         this.load.image('placeholder', 'assets/placeholder.png');
+        this.load.image('greenplaceholder', 'assets/greenplaceholder.png');
     },
 
     create: function () {
@@ -28,6 +29,13 @@ Game.prototype = {
         
         // Enable bounce for testing
         this.block.body.bounce.set(1);
+        
+        // Create an object pool of green blocks to represent larger planets
+        this.largePlanetsGroup = this.add.group();
+        
+        for (var i = 0; i < 15; i++) {
+            this.largePlanetsGroup.create(this.world.randomX, this.world.randomY, 'greenplaceholder');
+        }
     },
 
     update: function () {
