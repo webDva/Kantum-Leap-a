@@ -60,6 +60,11 @@ Game.prototype = {
                 this.game.add.text(this.world.centerX, this.world.centerY, "Hitu!", {fill: '#ffffff'});
             }
         }, this);
+        
+        // Time for gameplay and user interface
+        this.timeElapsed = 0;
+        this.timeDisplay = this.add.text(0, this.world.centerY, 'Time: 0', {fill: '#ffffff'});
+        this.time.events.loop(1000, this.updateTime, this);
     },
 
     addVector: function () {
@@ -69,6 +74,11 @@ Game.prototype = {
     addGravity: function () {
         this.planetGravity += this.rnd.integerInRange(1, 70);
         this.smallWorld.body.gravity.set(0, this.planetGravity);
+    },
+    
+    updateTime: function () {
+        this.timeElapsed++;
+        this.timeDisplay.setText('Time: ' + this.timeElapsed);
     },
 
     update: function () {
