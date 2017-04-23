@@ -13,9 +13,15 @@ Game.prototype = {
     preload: function () {
         this.load.image('smallWorld', 'assets/smallWorld.png');
         this.load.image('greenplaceholder', 'assets/greenplaceholder.png');
+        this.load.image('fireTrapTop', 'assets/firetop.png');
+        this.load.image('fireTrapBottom', 'assets/firebottom.png');
     },
 
     create: function () {
+        // Add fire traps, top and bottom
+        this.fireTrapTop = this.add.sprite(0, 0, 'fireTrapTop');
+        this.fireTrapBottom = this.add.sprite(0, (this.world.centerY * 2) - this.fireTrapTop.height, 'fireTrapBottom');
+        
         // Display the world in the corner
         this.smallWorld = this.add.sprite(this.world.centerX, 0, 'smallWorld');
 
