@@ -50,6 +50,16 @@ Game.prototype = {
 
         // Timer to randomly increase the small planet's gravity over time
         this.time.events.loop(500, this.addGravity, this);
+        
+        // Collision signal for the fire traps
+        this.smallWorld.body.onWorldBounds = new Phaser.Signal();
+        this.smallWorld.body.onWorldBounds.add(function (sprite, up, down, left, right) {
+            // End the game if collision occurs
+            if (up || down) {
+                // For now, just display a message
+                this.game.add.text(this.world.centerX, this.world.centerY, "Hitu!", {fill: '#ffffff'});
+            }
+        }, this);
     },
 
     addVector: function () {
