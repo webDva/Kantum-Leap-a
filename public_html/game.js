@@ -32,6 +32,17 @@ Game.prototype = {
 
         // Enable bounce for testing
         this.block.body.bounce.set(1);
+        
+        // Button for adding an upward vector to the small world
+        this.button = this.add.button(this.world.centerX + this.world.centerX / 2,
+            this.world.centerY + this.world.centerY / 2,
+            'greenplaceholder',
+            this.addVector,
+            this);
+    },
+    
+    addVector: function () {
+        this.block.body.velocity.setTo(0, -400);
     },
 
     update: function () {
