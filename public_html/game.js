@@ -11,30 +11,29 @@ var Game = function (game) {
 
 Game.prototype = {
     preload: function () {
-        // Load placeholder sprites
-        this.load.image('placeholder', 'assets/placeholder.png');
+        this.load.image('smallWorld', 'assets/smallWorld.png');
         this.load.image('greenplaceholder', 'assets/greenplaceholder.png');
     },
 
     create: function () {
-        // Display the block in the corner
-        this.block = this.add.sprite(this.world.centerX, 0, 'placeholder');
+        // Display the world in the corner
+        this.smallWorld = this.add.sprite(this.world.centerX, 0, 'smallWorld');
 
         // Scale the small world to be small
-        this.block.scale.setTo(0.3, 0.3);
+        this.smallWorld.scale.setTo(0.3, 0.3);
 
         // Enable Arcade physics
-        this.physics.enable(this.block, Phaser.Physics.ARCADE);
+        this.physics.enable(this.smallWorld, Phaser.Physics.ARCADE);
 
-        // Enable gravity for the block only
+        // Enable gravity for the small world only
         this.planetGravity = 180; // Initial value for the planet's gravity; will increase over time
-        this.block.body.gravity.set(0, this.planetGravity);
+        this.smallWorld.body.gravity.set(0, this.planetGravity);
 
-        // Make block collide with world bounds
-        this.block.body.collideWorldBounds = true;
+        // Make small world collide with world bounds
+        this.smallWorld.body.collideWorldBounds = true;
 
         // Enable bounce for testing
-        this.block.body.bounce.set(1);
+        this.smallWorld.body.bounce.set(1);
 
         // Button for adding an upward vector to the small world
         this.button = this.add.button(this.world.centerX + this.world.centerX / 2,
@@ -48,12 +47,12 @@ Game.prototype = {
     },
 
     addVector: function () {
-        this.block.body.velocity.setTo(0, -400);
+        this.smallWorld.body.velocity.setTo(0, -400);
     },
 
     addGravity: function () {
         this.planetGravity += this.rnd.integerInRange(1, 70);
-        this.block.body.gravity.set(0, this.planetGravity);
+        this.smallWorld.body.gravity.set(0, this.planetGravity);
     },
 
     update: function () {
@@ -61,6 +60,6 @@ Game.prototype = {
     },
 
     render: function () {
-        this.game.debug.text('Small world gravity: ' + this.block.body.gravity, 0, 32);
+        this.game.debug.text('Small world gravity: ' + this.smallWorld.body.gravity, 0, 32);
     }
 };
