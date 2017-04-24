@@ -56,7 +56,6 @@ Game.prototype = {
         this.smallWorld.body.onWorldBounds.add(function (sprite, up, down, left, right) {
             // End the game if collision occurs
             if (up || down) {
-                this.game.state.states['End'].playerTime = this.timeElapsed;
                 this.state.start('End');
             }
         }, this);

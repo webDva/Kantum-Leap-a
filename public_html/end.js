@@ -11,7 +11,7 @@ var End = function (game) {
 
 End.prototype = {
     create: function () {
-        this.message = 'Your small planet lasted ' + this.playerTime + ' seconds long';
+        this.message = 'Your small planet lasted ' + this.game.state.states['Game'].timeElapsed + ' seconds long';
         this.displayText = this.add.text(this.world.centerX, this.world.centerY, this.message, {fill: '#ffffff'});
         this.displayText.anchor.setTo(0.5, 0.5);
     }
