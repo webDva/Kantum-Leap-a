@@ -85,6 +85,7 @@ Game.prototype = {
     },
 
     render: function () {
-        this.game.debug.text('Small world gravity: ' + this.smallWorld.body.gravity, 0, 32);
+        // For showing how much gravity the planet has
+        //this.game.debug.text('Small world gravity: ' + this.smallWorld.body.gravity, 0, 32);
     }
 };
