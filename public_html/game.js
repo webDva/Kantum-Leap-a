@@ -12,7 +12,7 @@ var Game = function (game) {
 Game.prototype = {
     preload: function () {
         this.load.image('smallWorld', 'assets/smallWorld.png');
-        this.load.image('greenplaceholder', 'assets/greenplaceholder.png');
+        this.load.image('button', 'assets/button.png');
         this.load.image('fireTrapTop', 'assets/firetop.png');
         this.load.image('fireTrapBottom', 'assets/firebottom.png');
     },
@@ -44,9 +44,11 @@ Game.prototype = {
         // Button for adding an upward vector to the small world
         this.button = this.add.button(this.world.centerX + this.world.centerX / 2,
                 this.world.centerY + this.world.centerY / 2,
-                'greenplaceholder',
+                'button',
                 this.addVector,
                 this);
+        this.button.scale.setTo(0.4, 0.4);
+
 
         // Timer to randomly increase the small planet's gravity over time
         this.time.events.loop(500, this.addGravity, this);
