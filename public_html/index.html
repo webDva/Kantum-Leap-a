@@ -12,6 +12,8 @@ and open the template in the editor.
 
         <script type="text/javascript" src="phaser.min.js"></script>  
         <script type="text/javascript" src="game.js"></script>
+        <script type="text/javascript" src="menu.js"></script>
+        <script type="text/javascript" src="end.js"></script>
     </head>
     <body>
         <script type ="text/javascript">
@@ -20,6 +22,8 @@ and open the template in the editor.
 
                 // Add game states
                 game.state.add('Game', Game);
+                game.state.add("Menu", Menu);
+                game.state.add("End", End);
 
                 // Initial state
                 game.state.start('Game');

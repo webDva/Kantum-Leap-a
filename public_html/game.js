@@ -21,7 +21,7 @@ Game.prototype = {
         // Add fire traps, top and bottom
         this.fireTrapTop = this.add.sprite(0, 0, 'fireTrapTop');
         this.fireTrapBottom = this.add.sprite(0, (this.world.centerY * 2) - this.fireTrapTop.height, 'fireTrapBottom');
-        
+
         // Display the world in the corner
         this.smallWorld = this.add.sprite(this.world.centerX, 0, 'smallWorld');
 
@@ -50,17 +50,17 @@ Game.prototype = {
 
         // Timer to randomly increase the small planet's gravity over time
         this.time.events.loop(500, this.addGravity, this);
-        
+
         // Collision signal for the fire traps
         this.smallWorld.body.onWorldBounds = new Phaser.Signal();
         this.smallWorld.body.onWorldBounds.add(function (sprite, up, down, left, right) {
             // End the game if collision occurs
             if (up || down) {
-                // For now, just display a message
-                this.game.add.text(this.world.centerX, this.world.centerY, "Hitu!", {fill: '#ffffff'});
+                this.game.state.states['End'].playerTime = this.timeElapsed;
+                this.state.start('End');
             }
         }, this);
-        
+
         // Time for gameplay and user interface
         this.timeElapsed = 0;
         this.timeDisplay = this.add.text(0, this.world.centerY, 'Time: 0', {fill: '#ffffff'});
@@ -75,7 +75,7 @@ Game.prototype = {
         this.planetGravity += this.rnd.integerInRange(1, 70);
         this.smallWorld.body.gravity.set(0, this.planetGravity);
     },
-    
+
     updateTime: function () {
         this.timeElapsed++;
         this.timeDisplay.setText('Time: ' + this.timeElapsed);
