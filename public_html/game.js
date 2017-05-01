@@ -18,6 +18,9 @@ Game.prototype = {
     },
 
     create: function () {
+        // Set game scale
+        this.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
+        
         // Add fire traps, top and bottom
         this.fireTrapTop = this.add.sprite(0, 0, 'fireTrapTop');
         this.fireTrapBottom = this.add.sprite(0, (this.world.centerY * 2) - this.fireTrapTop.height, 'fireTrapBottom');
